@@ -7,6 +7,7 @@ require('dotenv').config()
 
 
 const userRoute = express.Router()
+// const userRoute = express.Router()
 
 userRoute.post('/signup', async(req, res)=>{
 
