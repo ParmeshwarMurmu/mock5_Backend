@@ -11,7 +11,7 @@ const userRoute = express.Router()
 userRoute.post('/signup', async(req, res)=>{
 
     const {email, password} = req.body;
-    console.log(email);
+    // console.log(email);
     
 
     try {
@@ -40,10 +40,10 @@ userRoute.post('/signup', async(req, res)=>{
     }
 })
 
-userRoute.get("/login", async(req, res)=>{
+userRoute.post("/login", async(req, res)=>{
 
     const {email, password} = req.body;
-    console.log(email);
+    // console.log(email);
     
 
     try {
@@ -54,7 +54,7 @@ userRoute.get("/login", async(req, res)=>{
                 // result == true
 
                 if(result){
-                    const token = jwt.sign({userEmail: ExistingUser.email}, process.env.SECRET_KEY);
+                    const token = jwt.sign({userEmail: ExistingUser.email, uerId: ExistingUser._id}, process.env.SECRET_KEY);
                     res.status(200).send({"msg": "Login In Successfully", "token": token})
                     
                 }
